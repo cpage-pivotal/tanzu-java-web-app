@@ -1,0 +1,40 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
+- task: CmdLine@2
+  inputs:
+    script: |
+      git config --global user.email "pipeline@dev.azure.com"
+      git config --global user.name "Azure DevOps"
+      echo $BUILD_SOURCEBRANCH
+      echo GIT FETCH
+      git fetch
+      echo GIT CHECKOUT MAIN
+      git checkout main
+      echo GIT PULL
+      git pull
+      echo GIT BRANCH -d supply-chain
+      git branch -d supply-chain
+      echo GIT CHECKOUT -b supply-chain
+      git checkout -b supply-chain
+      echo GIT PUSH --force -u origin supply-chain
+      git push --force -u origin supply-chain
