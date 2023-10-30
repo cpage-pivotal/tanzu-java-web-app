@@ -39,6 +39,7 @@ steps:
       echo GH AUTH LOGIN
       export GH_TOKEN=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
       export GH_PROMPT_DISABLED=true
+      export GH_REPO=github.com/cpage-pivotal/tanzu-java-web-app
       export GIT_TERMINAL_PROMPT=1
       gh auth login
       echo GIT PUSH --force -u origin supply-chain
