@@ -33,6 +33,5 @@ steps:
       git checkout main
       echo GH AUTH LOGIN
       export GH_PROMPT_DISABLED=true
-      gh auth login
       echo GIT PUSH origin origin/main:supply-chain
       # git push origin origin/main:supply-chain
