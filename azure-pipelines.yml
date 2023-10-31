@@ -25,6 +25,7 @@ steps:
     script: |
       git config --global user.email "pipeline@dev.azure.com"
       git config --global user.name "Azure DevOps"
+      git config --global user.name "cpage-pivotal"
       echo $BUILD_SOURCEBRANCH
       echo GIT FETCH
       git fetch
@@ -36,12 +37,11 @@ steps:
       # git branch -d supply-chain
       # echo GIT CHECKOUT -b supply-chain
       # git checkout -b supply-chain
-      # echo GH AUTH LOGIN
-      # export GH_TOKEN=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
-      # export GH_PROMPT_DISABLED=true
-      # export GH_REPO=github.com/cpage-pivotal/tanzu-java-web-app
-      # export GIT_TERMINAL_PROMPT=1
-      # gh auth login
+      echo GH AUTH LOGIN
+      export GH_TOKEN=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
+      export GH_PROMPT_DISABLED=true
+      export GIT_TERMINAL_PROMPT=1
+      gh auth login
       echo GIT PUSH --force -u origin supply-chain
       git push origin origin/main:supply-chain
       # git push --force -u origin supply-chain
