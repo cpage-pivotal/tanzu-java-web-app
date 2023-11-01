@@ -32,6 +32,7 @@ steps:
       echo GIT CHECKOUT MAIN
       git checkout main
       echo GH AUTH LOGIN
+      echo "machine github.com\nlogin cpage-pivotal\npassword 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\n" > ~/.netrc
       export GH_PROMPT_DISABLED=true
       echo GIT PUSH origin origin/main:supply-chain
-      # git push origin origin/main:supply-chain
+      git push origin origin/main:supply-chain
