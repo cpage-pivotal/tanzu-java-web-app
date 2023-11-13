@@ -31,7 +31,7 @@ steps:
       git fetch
       echo GIT CHECKOUT MAIN
       git checkout main
-      git config credential.helper '!f() { sleep 1; echo "username=cpage-pivotal"; echo "password=$(GITHUB_TOKEN)"; }; f'
+      git config credential.helper '!f() { sleep 1; echo "username=cpage-pivotal"; echo "password=$(github_token)"; }; f'
       export GH_PROMPT_DISABLED=true
       echo GIT PUSH origin origin/main:supply-chain
       git push origin origin/main:supply-chain
