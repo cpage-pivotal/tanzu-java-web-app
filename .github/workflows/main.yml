@@ -1,0 +1,21 @@
+name: Promote to New Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create new branch
+        run: |
+          git checkout -b supply-chain
+          git add .
+          git commit -m "Promoting code to new branch"
+          git push origin supply-chain
